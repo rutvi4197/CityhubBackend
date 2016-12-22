@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 22, 2016 at 11:24 AM
+-- Generation Time: Dec 22, 2016 at 11:35 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -18,6 +18,29 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `cityhub`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ans_tbl`
+--
+
+CREATE TABLE IF NOT EXISTS `ans_tbl` (
+  `pk_ans_id` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_que_id` int(11) DEFAULT NULL,
+  `fk_event_id` int(11) DEFAULT NULL,
+  `fk_email_id` varchar(50) DEFAULT NULL,
+  `ans_desc` varchar(200) DEFAULT NULL,
+  `ans_date` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`pk_ans_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `ans_tbl`
+--
+
+INSERT INTO `ans_tbl` (`pk_ans_id`, `fk_que_id`, `fk_event_id`, `fk_email_id`, `ans_desc`, `ans_date`) VALUES
+(1, 1, 1, 'shahritu2111@gmail.com', 'abuisksbjsxn', '2016-12-22');
 
 -- --------------------------------------------------------
 
