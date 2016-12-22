@@ -9,6 +9,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var cities=require('./routes/cities');
 var cat=require('./routes/cat');
+var venue=require('./routes/venue');
+var wallet=require('./routes/wallet');
 var app = express();
 
 // view engine setup
@@ -28,6 +30,8 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/cities',cities);
 app.use('/cat',cat);
+app.use('/venue',venue);
+app.use('/wallet',wallet);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
