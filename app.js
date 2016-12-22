@@ -12,6 +12,7 @@ var cat=require('./routes/cat');
 var venue=require('./routes/venue');
 var wallet=require('./routes/wallet');
 var event=require('./routes/event');
+var book=require('./routes/book');
 var app = express();
 
 // view engine setup
@@ -34,6 +35,7 @@ app.use('/cat',cat);
 app.use('/venue',venue);
 app.use('/wallet',wallet);
 app.use('/event',event);
+app.use('/book',book);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
