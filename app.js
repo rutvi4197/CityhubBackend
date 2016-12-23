@@ -13,6 +13,12 @@ var venue=require('./routes/venue');
 var wallet=require('./routes/wallet');
 var event=require('./routes/event');
 var ans=require('./routes/ans');
+var book=require('./routes/book');
+var event_que=require('./routes/event_que');
+
+var offer=require('./routes/offer');
+var payment=require('./routes/payment');
+var testimonial=require('./routes/testimonial');
 var app = express();
 
 // view engine setup
@@ -36,6 +42,11 @@ app.use('/venue',venue);
 app.use('/wallet',wallet);
 app.use('/event',event);
 app.use('/ans',ans);
+app.use('/book',book);
+app.use('/event_que',event_que);
+app.use('/offer',offer);
+app.use('/payment',payment);
+app.use('/testimonial',testimonial);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
