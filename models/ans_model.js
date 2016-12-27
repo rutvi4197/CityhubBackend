@@ -16,6 +16,10 @@ return db.query("select * from ans_tbl where pk_ans_id=?",[id],callback);
  },
  deleteAns:function(id,callback){
   return db.query("delete from ans_tbl where pk_ans_id=?",[id],callback);
+ },
+ getquedetails(callback)
+ {
+     return db.query("select q.*,a.* from event_que_tbl as q,ans_tbl as a where a.fk_que_id=q.pk_que_id ",callback);
  }
 };
  module.exports=Ans;
