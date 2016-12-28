@@ -2,10 +2,14 @@ var db=require('../dbconnection'); //reference of dbconnection.js
  
 var Event={
 
-getAllEvent:function(callback){
+getEvent:function(callback){
  
 return db.query("Select * from event_tbl where flag=0",callback);
  
+},
+getAllEvent:function(callback)
+{
+    return db.query("Select * from event_tbl where flag=1",callback);
 },
  getEventById:function(id,callback){
  

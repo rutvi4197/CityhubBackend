@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var Ans=require('../models/book_model');
 
-router.get('/',function(req,res,next){
+router.get('/:id',function(req,res,next){
 
    
-        Ans.getticketcnt(function(err,rows){
+        Ans.getticketcnt(req.params.id,function(err,rows){
 
         if(err){
             res.json(err);

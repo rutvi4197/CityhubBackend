@@ -17,9 +17,9 @@ var Book={
     {
       return db.query("delete from book_tbl where pk_book_id=?",[id],callback);
     },
-    getticketcnt(callback)
+    getticketcnt(id,callback)
  {
-     return db.query('select sum(b.ticket_cnt)"cnt",e.event_name,b.fk_event_id from event_tbl as e,book_tbl as b  where e.pk_event_id=b.fk_event_id ',callback);
+     return db.query('select b.pk_book_id,e.event_name,b.fk_event_id,u.user_name,b.ticket_amnt,b.ticket_cnt from event_tbl as e,book_tbl as b,user_tbl as u  where e.pk_event_id=b.fk_event_id and u.pk_email_id=b.fk_email_id and b.fk_event_id=?',[id],callback);
  }
 
 
