@@ -15,12 +15,15 @@ var event=require('./routes/event');
 var ans=require('./routes/ans');
 var book=require('./routes/book');
 var event_que=require('./routes/event_que');
-var quedetails=require('./routes/quedetails')
-
+var quedetails=require('./routes/quedetails');
+var ansdetails=require('./routes/ansdetails');
 var offer=require('./routes/offer');
 var payment=require('./routes/payment');
+var approvevnet=require('./routes/approvevent');
 var testimonial=require('./routes/testimonial');
 var like=require('./routes/like');
+var ticketcnt=require('./routes/ticketcnt');
+
 var app = express();
 
 // view engine setup
@@ -37,9 +40,11 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+
 app.use('/users', users);
 app.use('/cities',cities);
 app.use('/cat',cat);
+app.use('/approvevent',approvevnet);
 app.use('/venue',venue);
 app.use('/wallet',wallet);
 app.use('/event',event);
@@ -50,6 +55,8 @@ app.use('/event_que',event_que);
 app.use('/offer',offer);
 app.use('/payment',payment);
 app.use('/testimonial',testimonial);
+app.use('/ticketcnt',ticketcnt);
+app.use('/ansdetails',ansdetails);
 
 app.use('/like',like);
 

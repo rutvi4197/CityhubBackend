@@ -16,7 +16,11 @@ var Book={
     deleteBook:function(id,callback)
     {
       return db.query("delete from book_tbl where pk_book_id=?",[id],callback);
-    }
+    },
+    getticketcnt(callback)
+ {
+     return db.query('select sum(b.ticket_cnt)"cnt",e.event_name,b.fk_event_id from event_tbl as e,book_tbl as b  where e.pk_event_id=b.fk_event_id ',callback);
+ }
 
 
 

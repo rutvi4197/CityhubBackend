@@ -20,6 +20,10 @@ var EventQue={
     updateEventQue:function(id,EventQue,callback)
     {
       return db.query("update event_que_tbl set que_desc=?,que_date=? where pk_que_id=? ",[EventQue.que_desc,EventQue.que_date,id],callback);
+    },
+    quedetails(callback)
+    {
+      return db.query("select q.*,u.* from event_que_tbl as q,user_tbl as u where q.fk_email_id=u.pk_email_id ",callback);
     }
 };
 module.exports=EventQue;
