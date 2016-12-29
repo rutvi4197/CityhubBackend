@@ -23,6 +23,12 @@ var approvevnet=require('./routes/approvevent');
 var testimonial=require('./routes/testimonial');
 var like=require('./routes/like');
 var ticketcnt=require('./routes/ticketcnt');
+var test=require('./routes/testdetails');
+var userjoin=require('./routes/userdetails');
+var venuejoin=require('./routes/venuedetails');
+var walletjoin=require('./routes/walletdetails');
+var paymentjoin=require('./routes/paymentdetails');
+
 
 var app = express();
 
@@ -57,8 +63,12 @@ app.use('/payment',payment);
 app.use('/testimonial',testimonial);
 app.use('/ticketcnt',ticketcnt);
 app.use('/ansdetails',ansdetails);
-
+app.use('/test',test);
 app.use('/like',like);
+app.use('/userdetails',userjoin);
+app.use('/venuedetails',venuejoin);
+app.use('/walletdetails',walletjoin);
+app.use('/paymentdetails',paymentjoin);
 
 
 // catch 404 and forward to error handler

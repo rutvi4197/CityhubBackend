@@ -19,6 +19,10 @@ return db.query("select * from user_tbl where pk_email_id=?",[id],callback);
  },
  updateUser:function(id,User,callback){
   return db.query("update user_tbl set user_name=?,user_mobile_no=?,fk_city_id=? where pk_email_id=?",[User.user_name,User.user_mobile_no,User.fk_city_id,id],callback);
+ },
+ userdetails:function(callback)
+ {
+    return db.query("select c.*,u.* from city_tbl as c,user_tbl as u where c.pk_city_id=u.fk_city_id",callback);
  }
  
 };

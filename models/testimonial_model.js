@@ -16,6 +16,10 @@ var Testimonial={
     deleteTestimonial:function(id,callback)
     {
       return db.query("delete from testimonial_tbl where pk_review_id=?",[id],callback);
+    },
+    testdetails:function(callback)
+    {
+      return db.query("select t.*,u.* from testimonial_tbl as t,user_tbl as u where t.fk_email_id=u.pk_email_id ",callback);
     }
 };
 module.exports=Testimonial;

@@ -4,19 +4,34 @@ var express = require('express');
  
 router.get('/:id?',function(req,res,next){
 
-    if(req.params.id)
-    {
-        Wallet.getWalletById(req.params.id,function(err,rows){
+  if(req.params.id)
+  {
+      Wallet.getWalletById(req.params.id,function(err,rows){
 
-        if(err){
-            res.json(err);
+        if(err)
+        {
+          res.json(err);
         }
         else{
-            res.json(rows);
+          res.json(rows);
         }
-    });
+      });
+  }
+  else{
 
+  Wallet.getAllWallet(function(err,rows){
+
+    if(err)
+    {
+      res.json(err);
     }
+    else{
+      res.json(rows);
+    }
+
+  });
+
+  }
 });
 
 router.put('/:id',function(req,res,next)

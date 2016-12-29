@@ -17,5 +17,9 @@ var Payment={
     {
         return db.query("delete from payment_tbl where pk_payment_id=?",[id],callback);
     },
+    paymentdetails:function(callback)
+    {
+      return db.query("select p.*,u.* from payment_tbl as p,user_tbl as u where p.fk_email_id=u.pk_email_id ",callback);
+    }
 };
 module.exports=Payment;
