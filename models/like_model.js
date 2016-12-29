@@ -3,7 +3,7 @@ var db=require('../dbconnection'); //reference of dbconnection.js
 var Like={
 getAllLike:function(callback){
  
-return db.query("Select * from like_tbl",callback);
+return db.query("select e.*,l.* from event_tbl as e,like_tbl as l where l.fk_event_id=e.pk_event_id ",callback);
  
 },
 getLikeById:function(id,callback)
