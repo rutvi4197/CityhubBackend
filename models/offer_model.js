@@ -3,7 +3,7 @@ var db=require('../dbconnection');
 var Offer={
     getAllOffer:function(callback)
     {
-      return  db.query("Select * from offer_tbl",callback);
+      return  db.query("Select o.*,u.user_name,e.event_name from offer_tbl as o,user_tbl as u,event_tbl as e where o.fk_email_id=u.pk_email_id and o.fk_event_id=e.pk_event_id",callback);
     },
     getOfferById:function(id,callback)
     {

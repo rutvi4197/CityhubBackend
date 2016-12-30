@@ -23,7 +23,7 @@ var EventQue={
     },
     quedetails(callback)
     {
-      return db.query("select q.*,u.* from event_que_tbl as q,user_tbl as u where q.fk_email_id=u.pk_email_id ",callback);
+      return db.query("select q.*,u.*,e.event_name from event_que_tbl as q,user_tbl as u,event_tbl as e where e.pk_event_id=q.fk_event_id and q.fk_email_id=u.pk_email_id ",callback);
     }
 };
 module.exports=EventQue;
