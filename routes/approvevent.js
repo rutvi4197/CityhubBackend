@@ -16,8 +16,6 @@ if(err)
   });
  });
 
- 
- module.exports=router;
   router.put('/:id',function(req,res,next){
  
 Event.approvevent(req.params.id,req.body,function(err,rows){

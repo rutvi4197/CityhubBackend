@@ -28,6 +28,7 @@ var userjoin=require('./routes/userdetails');
 var venuejoin=require('./routes/venuedetails');
 var walletjoin=require('./routes/walletdetails');
 var paymentjoin=require('./routes/paymentdetails');
+var disapprove=require('./routes/disapprove');
 
 
 var app = express();
@@ -69,6 +70,7 @@ app.use('/userdetails',userjoin);
 app.use('/venuedetails',venuejoin);
 app.use('/walletdetails',walletjoin);
 app.use('/paymentdetails',paymentjoin);
+app.use('/disapprovedetails',disapprove);
 
 
 // catch 404 and forward to error handler
