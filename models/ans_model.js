@@ -19,7 +19,7 @@ return db.query("select * from ans_tbl where pk_ans_id=?",[id],callback);
  },
  getquedetails:function(callback)
  {
-     return db.query("select q.*,a.*,u.* from event_que_tbl as q,ans_tbl as a,user_tbl as u where a.fk_que_id=q.pk_que_id and a.fk_email_id=u.pk_email_id",callback);
+     return db.query("select q.*,a.*,u.*,e.* from event_que_tbl as q,ans_tbl as a,user_tbl as u,event_tbl as e where a.fk_que_id=q.pk_que_id and a.fk_email_id=u.pk_email_id and a.fk_event_id=e.pk_event_id",callback);
  },
  deleteAllAns:function(id,callback){
   return db.query("delete from ans_tbl where fk_que_id=?",[id],callback);
