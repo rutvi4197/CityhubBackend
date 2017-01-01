@@ -29,8 +29,23 @@ router.get('/:id?',function(req,res,next){
     });
     }
 });
-router.post('/',function(req,res,next)
+router.post('/:id?',function(req,res,next)
 {
+    if(req.params.id)
+    {
+        City.deleteAllCity(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+        });
+    }
+    else{
+        
     City.addCity(req.body,function(err,rows)
     {
         if(err)
@@ -41,6 +56,7 @@ router.post('/',function(req,res,next)
             res.json(rows);
         }
     });
+    }
 });
 
 router.put('/:id',function(req,res,next)
@@ -58,9 +74,9 @@ router.put('/:id',function(req,res,next)
     });
 
 });
-router.delete('/:id',function(req,res,next)
+router.delete('/',function(req,res,next)
 {
-    City.deleteCity(req.params.id,function(err,rows)
+    City.deleteCity(req.body,function(err,rows)
     {
         if(err)
         {

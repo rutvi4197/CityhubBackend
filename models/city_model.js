@@ -10,9 +10,19 @@ getCityById:function(id,callback)
 {
     return db.query("Select * from city_tbl where pk_city_id=?",[id],callback);
 },
-deleteCity:function(id,callback)
+deleteAllCity:function(City,callback)
 {
-    return db.query("delete from city_tbl where pk_city_id=?",[id],callback);
+    var delarr=[];
+    var i=0;
+    for(i=0;i<City.length;i++)
+    {
+        delarr[i]=City[i].pk_city_id;
+    }
+    return db.query("delete from city_tbl where pk_city_id in (?)",[delarr],callback);
+},
+deleteCity(id,callback)
+{
+    return db.query("deleter from city_tbl where pk_city_id=?",[id],callback);
 },
 updateCity:function(id,City,callback)
 {
