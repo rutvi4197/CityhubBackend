@@ -12,6 +12,16 @@ getDisEvent:function(callback){
 return db.query("Select * from event_tbl where flag=2",callback);
  
 },
+deleteAllEvent:function(Event,callback)
+{
+    var delarr=[];
+    var i=0;
+    for(i=0;i<Event.length;i++)
+    {
+        delarr[i]=Event[i].pk_event_id;
+    }
+    return db.query("delete from event_tbl where pk_event_id in (?)",[delarr],callback);
+},
 getAllEvent:function(callback)
 {
     return db.query("Select * from event_tbl where flag=1",callback);
@@ -21,8 +31,8 @@ getAllEvent:function(callback)
 return db.query("select * from event_tbl where pk_event_id=?",[id],callback);
  },
  addEvent:function(Event,callback){
- return db.query("Insert into event_tbl(event_name,event_logo,event_slogan,event_des,fk_venue_id,event_date,event_time,event_ticket,event_price,fk_cat_id,fk_email_id,fk_offer_id,event_cnt) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
- [Event.event_name,Event.event_logo,Event.event_slogan,Event.event_des,Event.fk_veue_id,
+ return db.query("Insert into event_tbl(event_name,event_logo,event_slogan,event_des,fk_venue_id,event_date,event_time,event_ticket,event_price,fk_cat_id,fk_email_id,fk_offer_id,event_cnt,flag) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+ [Event.event_name,Event.event_logo,Event.event_slogan,Event.event_des,Event.fk_venue_id,
  Event.event_date,Event.event_time,Event.event_ticket,Event.event_price,
  Event.fk_cat_id,Event.fk_email_id,Event.fk_offer_id,Event.event_cnt,Event.flag],callback);
 },

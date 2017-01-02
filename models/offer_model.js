@@ -11,11 +11,11 @@ var Offer={
     },
     addOffer:function(Offer,callback)
     {
-      return db.query("Insert into offer_tbl(fk_email_id,offer_price,offer_promocode,offer_photo,fk_event_id) values(?,?,?,?,?)",[Offer.fk_email_id,Offer.offer_price,Offer.offer_promocode,Offer.offer_photo,Offer.fk_event_id],callback);
+      return db.query("Insert into offer_tbl(fk_email_id,offer_price,offer_promocode,offer_photo,fk_event_id,offer_name) values(?,?,?,?,?,?)",[Offer.fk_email_id,Offer.offer_price,Offer.offer_promocode,Offer.offer_photo,Offer.fk_event_id,Offer.offer_name],callback);
     },
      updateOffer:function(id,Offer,callback)
      {
-        return db.query("update offer_tbl set offer_price=?,offer_promocode=?,offer_photo=?,fk_event_id=? where pk_offer_id=? ",[Offer.offer_price,Offer.offer_promocode,Offer.offer_photo,Offer.fk_event_id,id],callback);
+        return db.query("update offer_tbl set offer_name=?,offer_price=?,offer_promocode=?,offer_photo=?,fk_event_id=? where pk_offer_id=? ",[Offer.offer_name,Offer.offer_price,Offer.offer_promocode,Offer.offer_photo,Offer.fk_event_id,id],callback);
     },
     deleteOffer:function(id,callback)
     {

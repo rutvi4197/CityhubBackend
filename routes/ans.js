@@ -42,6 +42,32 @@ router.post('/',function(req,res,next)
         }
     });
 });
+router.post('/:id',function(req,res,next)
+{
+    Ans.deleteAlAns(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.put('/:id',function(req,res,next)
+{
+    Ans.editAns(req.params.id,req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
 
 router.delete('/:id',function(req,res,next)
 {

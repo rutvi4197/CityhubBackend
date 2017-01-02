@@ -74,9 +74,9 @@ router.put('/:id',function(req,res,next)
     });
 
 });
-router.delete('/',function(req,res,next)
+router.delete('/:id',function(req,res,next)
 {
-    City.deleteCity(req.body,function(err,rows)
+    City.deleteCity(req.params.id,function(err,rows)
     {
         if(err)
         {

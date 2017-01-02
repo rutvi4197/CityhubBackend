@@ -42,6 +42,19 @@ router.post('/',function(req,res,next)
         }
     });
 });
+router.post('/:id',function(req,res,next)
+{
+    Event_Que.deleteAlQue(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
 
 router.delete('/:id',function(req,res,next)
 {

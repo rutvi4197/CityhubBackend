@@ -58,6 +58,20 @@ router.post('/',function(req,res,next)
         }
     });
 });
+router.post('/:id',function(req,res,next)
+{
+    Like.deleteAllLike(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
+    });
+});
 
  
  module.exports=router;

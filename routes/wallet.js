@@ -33,10 +33,9 @@ router.get('/:id?',function(req,res,next){
 
   }
 });
-
-router.put('/:id',function(req,res,next)
+router.delete('/:id',function(req,res,next)
 {
-    Wallet.addWallet(req.params.id,req.body,function(err,rows)
+    Wallet.deleteWallet(req.params.id,function(err,rows)
     {
         if(err)
         {
@@ -50,5 +49,47 @@ router.put('/:id',function(req,res,next)
 
 });
 
- 
+router.put('/:id',function(req,res,next)
+{
+    Wallet.updateWallet(req.params.id,req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else
+        {
+            res.json(rows);
+        }
+    });
+
+});
+router.post('/',function(req,res,next)
+{
+Wallet.addWallet(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.post('/:id',function(req,res,next)
+{
+    
+        Wallet.deleteAllWallet(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+        });
+});  
+
  module.exports=router;

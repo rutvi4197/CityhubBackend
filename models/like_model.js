@@ -17,6 +17,16 @@ addLike:function(Like,callback)
 updateLike:function(Like,id,callback)
 {
     return db.query("update like_tbl set likecnt=?,dislikecnt=? where fk_event_id=?",[Like.likecnt,Like.dislikecnt,id],callback);
+},
+deleteAllLike:function(Like,callback)
+{
+    var delarr=[];
+    var i=0;
+    for(i=0;i<Like.length;i++)
+    {
+        delarr[i]=Like[i].pk_like_id;
+    }
+    return db.query("delete from like_tbl where pk_like_id in (?)",[delarr],callback);
 }
 
 };
