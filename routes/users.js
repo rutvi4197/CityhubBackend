@@ -61,6 +61,7 @@ if(err)
  
 });
  });
+ 
  router.put('/:id',function(req,res,next){
  
 User.updateUser(req.params.id,req.body,function(err,rows){

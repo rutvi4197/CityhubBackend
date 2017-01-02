@@ -29,8 +29,24 @@ router.get('/:id?',function(req,res,next){
     });
     }
 });
-router.post('/',function(req,res,next)
+
+router.post('/:id?',function(req,res,next)
 {
+    if(req.params.id)
+    {
+        Cat.deleteAllCat(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+        });
+    }
+    else{
+        
     Cat.addCat(req.body,function(err,rows)
     {
         if(err)
@@ -41,7 +57,9 @@ router.post('/',function(req,res,next)
             res.json(rows);
         }
     });
+    }
 });
+
 
 router.put('/:id',function(req,res,next)
 {

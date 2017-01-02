@@ -21,6 +21,17 @@ var Venue={
     {
       return db.query("delete from venue_tbl where pk_venue_id=?",[id],callback);
     },
+    
+    deleteAllVenue:function(Venue,callback)
+    {
+        var delarr=[];
+        var i=0;
+        for(i=0;i<Venue.length;i++)
+        {
+            delarr[i]=Venue[i].pk_venue_id;
+        }
+        return db.query("delete from venue_tbl where pk_venue_id in (?)",[delarr],callback);
+    },
     venuedetails:function(callback)
     {
       return db.query("select v.*,c.* from venue_tbl as v,city_tbl as c where c.pk_city_id=v.fk_city_id",callback);

@@ -5,6 +5,16 @@ var Cat={
     {
       return  db.query("Select * from cat_tbl",callback);
     },
+    deleteAllCat:function(Cat,callback)
+    {
+        var delarr=[];
+        var i=0;
+        for(i=0;i<Cat.length;i++)
+        {
+            delarr[i]=Cat[i].pk_cat_id;
+        }
+        return db.query("delete from cat_tbl where pk_cat_id in (?)",[delarr],callback);
+    },
     getCatById:function(id,callback)
     {
        return db.query("Select * from cat_tbl where pk_cat_id=?",[id],callback);

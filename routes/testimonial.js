@@ -34,18 +34,54 @@ router.get('/:id?',function(req,res,next){
   }
 });
 
-router.post('/',function(req,res,next){
+router.post('/:id?',function(req,res,next)
+{
+    if(req.params.id)
+    {
+        Testimonial.deleteAllTestimonial(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+        });
+    }
+    else{
+        
+    Testimonial.addTestimonial(req.body,function(err,rows)
+    {
+        if(err)
+        {
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+    }
+});
+
+
+
+ router.put('/:id',function(req,res,next){
  
-Testimonial.addTestimonial(req.body,function(err,count){
-  if(err)
+Testimonial.updateTestimonial(req.params.id,req.body,function(err,rows){
+ 
+if(err)
   {
   res.json(err);
   }
-  else{
-  res.json(req.body);//or return count for 1 or 0
+  else
+  {
+  res.json(rows);
   }
   });
  });
+
+
  router.delete('/:id',function(req,res,next){
  
 Testimonial.deleteTestimonial(req.params.id,function(err,count){
