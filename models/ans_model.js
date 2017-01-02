@@ -9,7 +9,7 @@ return db.query("select * from ans_tbl",callback);
 },
  getAnsById:function(id,callback){
  
-return db.query("select * from ans_tbl where fk_que_id=?",[id],callback);
+return db.query("select u.user_name,a.* from ans_tbl as a, user_tbl as u where a.fk_email_id=u.pk_email_id and fk_que_id=?",[id],callback);
  },
  addAns:function(Ans,callback){
  return db.query("Insert into ans_tbl(fk_que_id,fk_event_id,fk_email_id,ans_desc,ans_date) values(?,?,?,?,?)",[Ans.fk_que_id,Ans.fk_event_id,Ans.fk_email_id,Ans.ans_desc,Ans.ans_date],callback);

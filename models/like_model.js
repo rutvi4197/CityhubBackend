@@ -24,9 +24,9 @@ deleteAllLike:function(Like,callback)
     var i=0;
     for(i=0;i<Like.length;i++)
     {
-        delarr[i]=Like[i].pk_like_id;
+        delarr[i]=Like[i].fk_event_id;
     }
-    return db.query("delete from like_tbl where pk_like_id in (?)",[delarr],callback);
+    return db.query("delete from like_tbl where fk_event_id in (?)",[delarr],callback);
 }
 
 };
