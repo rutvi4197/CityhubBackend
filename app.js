@@ -29,7 +29,7 @@ var venuejoin=require('./routes/venuedetails');
 var walletjoin=require('./routes/walletdetails');
 var paymentjoin=require('./routes/paymentdetails');
 var disapprove=require('./routes/disapprove');
-
+var ansget=require('./routes/ansget');
 
 var app = express();
 
@@ -47,7 +47,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-
+app.use('/ansget',ansget);
 app.use('/users', users);
 app.use('/cities',cities);
 app.use('/cat',cat);
