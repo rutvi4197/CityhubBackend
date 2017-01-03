@@ -9,6 +9,16 @@ var Offer={
     {
        return db.query("Select * from offer_tbl where pk_offer_id=?",[id],callback);
     },
+    deleteAllOffer:function(Offer,callback)
+{
+    var delarr=[];
+    var i=0;
+    for(i=0;i<Offer.length;i++)
+    {
+        delarr[i]=Offer[i].pk_offer_id;
+    }
+    return db.query("delete from offer_tbl where pk_offer_id in (?)",[delarr],callback);
+},
     addOffer:function(Offer,callback)
     {
       return db.query("Insert into offer_tbl(fk_email_id,offer_price,offer_promocode,offer_photo,fk_event_id,offer_name) values(?,?,?,?,?,?)",[Offer.fk_email_id,Offer.offer_price,Offer.offer_promocode,Offer.offer_photo,Offer.fk_event_id,Offer.offer_name],callback);

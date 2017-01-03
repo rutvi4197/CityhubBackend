@@ -23,7 +23,17 @@ return db.query("select * from user_tbl where pk_email_id=?",[id],callback);
  userdetails:function(callback)
  {
     return db.query("select c.*,u.* from city_tbl as c,user_tbl as u where c.pk_city_id=u.fk_city_id",callback);
- }
+ },
+ deleteAllUser:function(User,callback)
+{
+    var delarr=[];
+    var i=0;
+    for(i=0;i<User.length;i++)
+    {
+        delarr[i]=User[i].pk_email_id;
+    }
+    return db.query("delete from user_tbl where pk_email_id in (?)",[delarr],callback);
+}
  
 };
  module.exports=User;

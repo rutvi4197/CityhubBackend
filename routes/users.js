@@ -46,6 +46,18 @@ User.addUser(req.body,function(err,count){
   }
   });
  });
+ router.post('/:id',function(req,res,next){
+ 
+User.deleteAllUser(req.body,function(err,count){
+  if(err)
+  {
+  res.json(err);
+  }
+  else{
+  res.json(req.body);//or return count for 1 or 0
+  }
+  });
+ });
  router.delete('/:id',function(req,res,next){
  
 User.deleteUser(req.params.id,function(err,count){

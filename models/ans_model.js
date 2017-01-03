@@ -27,7 +27,7 @@ return db.query("select u.user_name,a.* from ans_tbl as a, user_tbl as u where a
  deletequeAns:function(id,callback){
   return db.query("delete from ans_tbl where fk_que_id=?",[id],callback);
  },
-    deleteAlAns:function(Ans,callback)
+  deleteAlAns:function(Ans,callback)
 {
     var delarr=[];
     var i=0;
