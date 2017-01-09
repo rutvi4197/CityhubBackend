@@ -12,6 +12,10 @@ getDisEvent:function(callback){
 return db.query("Select * from event_tbl where flag=2",callback);
  
 },
+getByEventId:function(id,callback)
+{
+       return db.query("select b.*,e.* from event_tbl as e,book_tbl as b where e.pk_event_id=b.fk_event_id where ",[id],callback);
+},
 deleteAllEvent:function(Event,callback)
 {
     var delarr=[];

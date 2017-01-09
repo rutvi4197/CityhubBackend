@@ -9,7 +9,7 @@ return db.query("select * from ans_tbl",callback);
 },
  getAnsById:function(id,callback){
  
-return db.query("select u.user_name,a.* from ans_tbl as a, user_tbl as u where a.fk_email_id=u.pk_email_id and fk_que_id=?",[id],callback);
+return db.query("select u.user_name,a.* from ans_tbl as a, user_tbl as u where a.fk_email_id=u.pk_email_id and a.fk_que_id=?",[id],callback);
  },
  getAnsByAns:function(id,callback){
  
