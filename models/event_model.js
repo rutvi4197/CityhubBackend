@@ -22,6 +22,16 @@ deleteAllEvent:function(Event,callback)
     }
     return db.query("delete from event_tbl where pk_event_id in (?)",[delarr],callback);
 },
+updateAllEvent:function(Event,callback)
+{
+    var delarr=[];
+    var i=0;
+    for(i=0;i<Event.length;i++)
+    {
+        delarr[i]=Event[i].pk_event_id;
+    }
+    return db.query("update event_tbl set flag=1 where pk_event_id in (?)",[delarr],callback);
+},
 getAllEvent:function(callback)
 {
     return db.query("Select * from event_tbl where flag=1",callback);

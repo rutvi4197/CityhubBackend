@@ -15,6 +15,17 @@ router.get('/:id',function(req,res,next){
         }
     });
 });
+router.delete('/:id',function(req,res,next){
 
+   
+        Ans.deletequeAns(req.params.id,function(err,rows){
 
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
 module.exports=router;
