@@ -25,13 +25,14 @@ var EventQue={
     },
     deleteEventQue:function(id,callback)
     {
+     // db.query("delete from ans_tbl where fk_que_id=?",[id],callback);
       return db.query("delete from event_que_tbl where pk_que_id=?",[id],callback);
     },
     updateEventQue:function(id,EventQue,callback)
     {
       return db.query("update event_que_tbl set que_desc=?,que_date=? where pk_que_id=? ",[EventQue.que_desc,EventQue.que_date,id],callback);
     },
-    quedetails(callback)
+    quedetails:function(callback)
     {
       return db.query("select q.*,u.*,e.event_name from event_que_tbl as q,user_tbl as u,event_tbl as e where e.pk_event_id=q.fk_event_id and q.fk_email_id=u.pk_email_id ",callback);
     }

@@ -24,6 +24,7 @@ var testimonial=require('./routes/testimonial');
 var like=require('./routes/like');
 var ticketcnt=require('./routes/ticketcnt');
 var test=require('./routes/testdetails');
+var comment=require('./routes/comment');
 var userjoin=require('./routes/userdetails');
 var venuejoin=require('./routes/venuedetails');
 var walletjoin=require('./routes/walletdetails');
@@ -41,8 +42,8 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(cors());
 app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -56,6 +57,7 @@ app.use('/venue',venue);
 app.use('/wallet',wallet);
 app.use('/event',event);
 app.use('/ans',ans);
+app.use('/comment',comment);
 app.use('/book',book);
 app.use('/quedetails',quedetails)
 app.use('/event_que',event_que);

@@ -1,4 +1,5 @@
 var db=require('../dbconnection'); //reference of dbconnection.js
+var fs=require('fs');
  
 var User={
 
@@ -12,7 +13,23 @@ return db.query("Select * from user_tbl",callback);
 return db.query("select * from user_tbl where pk_email_id=?",[id],callback);
  },
  addUser:function(User,callback){
- return db.query("Insert into user_tbl values(?,?,?,?,?,?)",[User.pk_email_id,User.user_password,User.user_mobile_no,User.user_name,User.fk_city_id,User.user_type],callback);
+     var dt=new Date();//current date and time of server
+    var text = "";//random text
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 5; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+     var pos=User.user_photo.indexOf(",");
+     var base64d=User.user_photo.substring(pos+1);
+    var path="./public/images/profilepic/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
+    var path1="/images/profilepic/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
+fs.writeFile(path,base64d,'base64',function(err){
+ if(err) {
+        return console.log(err);
+    }
+   console.log("The file was saved!");
+ });
+ return db.query("Insert into user_tbl values(?,?,?,?,?,?,?)",[User.pk_email_id,User.user_password,User.user_mobile_no,User.user_name,User.fk_city_id,User.user_type,path1],callback);
  },
  deleteUser:function(id,callback){
   return db.query("delete from user_tbl where pk_email_id=?",[id],callback);

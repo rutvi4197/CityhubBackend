@@ -30,6 +30,20 @@ if(err)
   }
   });
  });
+  router.post('/:id',function(req,res,next){
+ 
+Event.updateAllEvent(req.body,function(err,rows){
+ 
+if(err)
+  {
+  res.json(err);
+  }
+  else
+  {
+  res.json(rows);
+  }
+  });
+ });
 
  
  module.exports=router;
