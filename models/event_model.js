@@ -1,5 +1,6 @@
 var db=require('../dbconnection'); //reference of dbconnection.js
- 
+var fs=require('fs');
+
 var Event={
 
 getEvent:function(callback){
@@ -51,8 +52,8 @@ return db.query("select * from event_tbl where pk_event_id=?",[id],callback);
 
     for( var i=0; i < 5; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
-     var pos=User.user_photo.indexOf(",");
-     var base64d=User.user_photo.substring(pos+1);
+     var pos=Event.event_logo.indexOf(",");
+     var base64d=Event.event_logo.substring(pos+1);
      var path="./public/images/event/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
      var path1="/images/event/"+text+dt.getDate()+dt.getMonth()+dt.getMilliseconds()+".png";
      fs.writeFile(path,base64d,'base64',function(err){
