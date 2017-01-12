@@ -32,6 +32,7 @@ var paymentjoin=require('./routes/paymentdetails');
 var disapprove=require('./routes/disapprove');
 var getbyid=require('./routes/getbyid');
 var ansget=require('./routes/ansget');
+var deleteevent=require('./routes/deleteevent');
 var app = express();
 
 // view engine setup
@@ -74,7 +75,7 @@ app.use('/walletdetails',walletjoin);
 app.use('/paymentdetails',paymentjoin);
 app.use('/disapprovedetails',disapprove);
 app.use('/getbyid',getbyid);
-
+app.use('/deleteevent',deleteevent)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

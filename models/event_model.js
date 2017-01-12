@@ -68,10 +68,21 @@ return db.query("select * from event_tbl where pk_event_id=?",[id],callback);
  Event.event_date,Event.event_time,Event.event_ticket,Event.event_price,
  Event.fk_cat_id,Event.fk_email_id,Event.fk_offer_id,Event.event_cnt,Event.flag],callback);
 },
- deleteEvent:function(id,callback){
+
+ deleteEvent:function(id,Event,callback){
+     var path='./public'+Event.event_logo;
+     fs.unlink(path,function(err)
+     {
+         if(err)
+         {
+             console.log(err);
+         }
+         console.log("Deleted")});
+     
   return db.query("delete from event_tbl where pk_event_id=?",[id],callback);
  },
  updateEvent:function(id,Event,callback){
+         
   return db.query("update event_tbl set event_name=?,event_logo=?,event_slogan=?,event_des=?,event_date=?,event_time=?,event_ticket=?,event_price=? where pk_event_id=?",
   [Event.event_name,Event.event_logo,Event.event_slogan,Event.event_des,Event.event_date,Event.event_time,Event.event_ticket,Event.event_price,id],callback);
  },

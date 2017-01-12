@@ -59,21 +59,6 @@ Event.deleteAllEvent(req.body,function(err,count){
   });
  });
  
- router.delete('/:id',function(req,res,next){
- 
-Event.deleteEvent(req.params.id,function(err,count){
- 
-if(err)
-  {
-  res.json(err);
-  }
-  else
-  {
-  res.json(count);
-  }
- 
-});
- });
  router.put('/:id',function(req,res,next){
  
 Event.updateEvent(req.params.id,req.body,function(err,rows){
