@@ -31,10 +31,17 @@ fs.writeFile(path,base64d,'base64',function(err){
  });
  return db.query("Insert into user_tbl values(?,?,?,?,?,?,?)",[User.pk_email_id,User.user_password,User.user_mobile_no,User.user_name,User.fk_city_id,User.user_type,path1],callback);
  },
- deleteUser:function(id,callback){
+ deleteUser:function(id,User,callback){
+     var path='./public'+User.user_photo;
+        fs.unlink(path,function(err){
+            if(err){
+            console.log(err);
+            }
+            console.log('Deleted successfuly')});
   return db.query("delete from user_tbl where pk_email_id=?",[id],callback);
  },
  updateUser:function(id,User,callback){
+        
   return db.query("update user_tbl set user_name=?,user_mobile_no=?,fk_city_id=? where pk_email_id=?",[User.user_name,User.user_mobile_no,User.fk_city_id,id],callback);
  },
  userdetails:function(callback)

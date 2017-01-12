@@ -58,21 +58,6 @@ User.deleteAllUser(req.body,function(err,count){
   }
   });
  });
- router.delete('/:id',function(req,res,next){
- 
-User.deleteUser(req.params.id,function(err,count){
- 
-if(err)
-  {
-  res.json(err);
-  }
-  else
-  {
-  res.json(count);
-  }
- 
-});
- });
  
  router.put('/:id',function(req,res,next){
  
