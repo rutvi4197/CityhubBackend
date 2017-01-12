@@ -30,6 +30,7 @@ var venuejoin=require('./routes/venuedetails');
 var walletjoin=require('./routes/walletdetails');
 var paymentjoin=require('./routes/paymentdetails');
 var disapprove=require('./routes/disapprove');
+var deleteuser=require('./routes/deleteuser');
 var getbyid=require('./routes/getbyid');
 var ansget=require('./routes/ansget');
 var deleteevent=require('./routes/deleteevent');
@@ -74,6 +75,7 @@ app.use('/venuedetails',venuejoin);
 app.use('/walletdetails',walletjoin);
 app.use('/paymentdetails',paymentjoin);
 app.use('/disapprovedetails',disapprove);
+app.use('/deleteuser',deleteuser);
 app.use('/getbyid',getbyid);
 app.use('/deleteevent',deleteevent)
 
